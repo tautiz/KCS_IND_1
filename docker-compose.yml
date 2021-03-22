@@ -13,6 +13,10 @@ services:
     environment:
       APACHE_SERVER_NAME: kcs
       APPLICATION_ENV: development
+      DB_HOST: db
+      DB_USER: devuser
+      DB_PASS: devpass
+      DB_NAME: kcs_db
 
   db:
     image: mysql:latest

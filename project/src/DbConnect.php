@@ -3,19 +3,12 @@
 namespace KCS;
 
 use PDO;
-use PDOException;
 
 class DbConnect
 {
-    public static function tikrintiPrisijungima($host, $user, $password, $db): void
+    public function __construct()
     {
-        try {
-            $conn = new PDO("mysql:host=$host;dbname=$db", $user, $password);
-            // Nustatome PDO Klaidų rėžimą į 'Exception'
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo '<br>Duomenų bazė veikia';
-        } catch(PDOException $e) {
-            echo '<br>Duomenų bazė neveikia: ' . $e->getMessage();
-        }
+        $this->conn = new PDO("mysql:host=127.0.0.1;dbname=kcs_db", 'devuser', 'devpass');
+        $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 }

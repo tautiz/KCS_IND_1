@@ -6,6 +6,14 @@ class Render
 {
     public function render($duom): void
     {
-        echo $duom;
+         $str = '';
+        if (is_array($duom)) {
+            foreach ($duom as $item) {
+                $str .= "\n" . implode(',', $item);
+            }
+            echo $str ?: 'Missing data.';
+        } else {
+            echo $duom;
+        }
     }
 }

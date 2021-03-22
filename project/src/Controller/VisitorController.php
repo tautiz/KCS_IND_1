@@ -18,7 +18,7 @@ class VisitorController extends BaseController
         $this->manager = $manager;
     }
 
-    public function index()
+    public function index(): void
     {
         $lankytojai = $this->manager->getAllVisitors();
 

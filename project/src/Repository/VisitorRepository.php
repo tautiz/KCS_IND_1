@@ -2,6 +2,7 @@
 
 namespace KCS\Repository;
 
+use KCS\Model\VisitorModel;
 use PDO;
 
 class VisitorRepository extends BaseRepository
@@ -9,7 +10,7 @@ class VisitorRepository extends BaseRepository
     public function all(): array
     {
         $stmt = $this->conn->prepare('SELECT * FROM visitors');
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, VisitorModel::class);
         $stmt->execute();
 
         return $stmt->fetchAll();

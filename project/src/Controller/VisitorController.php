@@ -24,4 +24,10 @@ class VisitorController extends BaseController
 
         $this->render->render($lankytojai);
     }
+
+    public function store($params): void
+    {
+        $lankytojas = $this->manager->store($params);
+        $this->render->render($lankytojas);
+    }
 }

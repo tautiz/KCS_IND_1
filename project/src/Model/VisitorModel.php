@@ -2,15 +2,13 @@
 
 namespace KCS\Model;
 
-class VisitorModel implements ToStringInterface
+class VisitorModel extends BaseModel implements ToStringInterface
 {
-    private int $id;
-
     private string $name;
 
-    private string $email;
+    private ?string $email;
 
-    private string $phone;
+    private ?string $phone;
 
     private string $created_at;
 
@@ -18,13 +16,7 @@ class VisitorModel implements ToStringInterface
 
     private ?string $deleted_at;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    private int $address_id;
 
     /**
      * @return string
@@ -35,19 +27,71 @@ class VisitorModel implements ToStringInterface
     }
 
     /**
-     * @return string
+     * @param  string  $name
+     *
+     * @return VisitorModel
      */
-    public function getEmail(): string
+    public function setName(string $name): VisitorModel
     {
-        return $this->email;
+        $this->name = $name;
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getPhone(): string
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param  string|null  $email
+     *
+     * @return VisitorModel
+     */
+    public function setEmail(?string $email): VisitorModel
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPhone(): ?string
     {
         return $this->phone;
+    }
+
+    /**
+     * @param  string|null  $phone
+     *
+     * @return VisitorModel
+     */
+    public function setPhone(?string $phone): VisitorModel
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAddressId(): int
+    {
+        return $this->address_id;
+    }
+
+    /**
+     * @param  int  $address_id
+     *
+     * @return VisitorModel
+     */
+    public function setAddressId(int $address_id): VisitorModel
+    {
+        $this->address_id = $address_id;
+        return $this;
     }
 
     /**
@@ -67,47 +111,6 @@ class VisitorModel implements ToStringInterface
     }
 
     /**
-     * @return string|null
-     */
-    public function getDeletedAt(): ?string
-    {
-        return $this->deleted_at;
-    }
-
-    /**
-     * @param  string  $name
-     *
-     * @return VisitorModel
-     */
-    public function setName(string $name): VisitorModel
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @param  string  $email
-     *
-     * @return VisitorModel
-     */
-    public function setEmail(string $email): VisitorModel
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    /**
-     * @param  string  $phone
-     *
-     * @return VisitorModel
-     */
-    public function setPhone(string $phone): VisitorModel
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    /**
      * @param  string  $updated_at
      *
      * @return VisitorModel
@@ -116,6 +119,15 @@ class VisitorModel implements ToStringInterface
     {
         $this->updated_at = $updated_at;
         return $this;
+    }
+
+    /**e
+     *
+     * @return string|null
+     */
+    public function getDeletedAt(): ?string
+    {
+        return $this->deleted_at;
     }
 
     /**
@@ -131,6 +143,6 @@ class VisitorModel implements ToStringInterface
 
     public function __toString(): string
     {
-        return $this->name . ' ' . $this->email;
+        return $this->id.' '.$this->name.' '.$this->email;
     }
 }

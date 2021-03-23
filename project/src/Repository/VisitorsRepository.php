@@ -5,8 +5,10 @@ namespace KCS\Repository;
 use KCS\Model\VisitorModel;
 use PDO;
 
-class VisitorRepository extends BaseRepository
+class VisitorsRepository extends BaseRepository
 {
+    public const MODEL = VisitorModel::class;
+
     public function all(): array
     {
         $stmt = $this->conn->prepare('SELECT * FROM visitors');

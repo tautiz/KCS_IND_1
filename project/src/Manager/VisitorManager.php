@@ -2,22 +2,29 @@
 
 namespace KCS\Manager;
 
-use KCS\Repository\VisitorRepository;
+use KCS\Model\ModelInterface;
+use KCS\Repository\VisitorsRepository;
 
 class VisitorManager
 {
     /**
-     * @var VisitorRepository
+     * @var VisitorsRepository
      */
-    private VisitorRepository $repository;
+    private VisitorsRepository $repository;
 
-    public function __construct(VisitorRepository $repository)
+    public function __construct(VisitorsRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function getAllVisitors()
+    public function getAllVisitors(): array
     {
         return $this->repository->all();
+    }
+
+    public function store($params): ModelInterface
+    {
+        // @TODO: Do some Validations here
+        return $this->repository->store($params);
     }
 }

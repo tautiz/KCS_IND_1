@@ -12,6 +12,7 @@ class Render
 
          if ($duom instanceof ToStringInterface){
              echo $duom;
+             return;
          }
 
         if (is_array($duom)) {

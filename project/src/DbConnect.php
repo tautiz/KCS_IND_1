@@ -7,7 +7,7 @@ use PDO;
 class DbConnect
 {
     /** @var PDO $conn */
-    private $conn;
+    private PDO $conn;
 
     public function __construct()
     {

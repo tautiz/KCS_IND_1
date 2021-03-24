@@ -3,6 +3,8 @@
 namespace KCS\Controller;
 
 use KCS\Manager\VisitorManager;
+use KCS\Model\AddressModel;
+use KCS\Model\VisitorModel;
 use KCS\Render;
 
 class VisitorController extends BaseController
@@ -27,7 +29,16 @@ class VisitorController extends BaseController
 
     public function store($params): void
     {
-        $lankytojas = $this->manager->store($params);
+        $addressDto = $this->requestHandler->getModelDto(AddressModel::class);
+        $visitorDTO = $this->requestHandler->getModelDto(VisitorModel::class);
+
+        $address = $this->addressManager->getOrCreate($addressDto);
+
+        $lankytojas = $this->manager->store($visitorDTO);
+
+        $lankytojas->setAddressId($address->getId());
+        $lankytojas = $this->manager->update($lankytojas);
+
         $this->render->render($lankytojas);
     }
 }

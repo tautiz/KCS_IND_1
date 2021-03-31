@@ -1,6 +1,6 @@
 FROM php:7.4.12-apache
-RUN apt-get update && apt-get upgrade -y
-RUN docker-php-ext-install mysqli pdo_mysql bcmath
+RUN apt-get update && apt-get upgrade -y libzip-dev
+RUN docker-php-ext-install mysqli pdo_mysql bcmath zip
 RUN a2enmod rewrite
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN pecl install xdebug

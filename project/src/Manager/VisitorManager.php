@@ -27,7 +27,7 @@ class VisitorManager
 
     public function store(VisitorDto $dto): ModelInterface
     {
-        $this->validator->validate(VisitorModel::class, $dto);
+        //$this->validator->validate(VisitorModel::class, $dto);
         return $this->repository->storeAndReturn($dto->toArray());
     }
 }

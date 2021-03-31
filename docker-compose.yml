@@ -11,6 +11,7 @@ services:
     depends_on:
       - db
     environment:
+      PHP_IDE_CONFIG: "serverName=kcs"
       APACHE_SERVER_NAME: kcs
       APPLICATION_ENV: development
       DB_HOST: db
